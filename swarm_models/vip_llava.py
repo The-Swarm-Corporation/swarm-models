@@ -8,7 +8,7 @@ from transformers import (
     VipLlavaForConditionalGeneration,
 )
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 class VipLlavaMultiModal(BaseMultiModalModel):

@@ -5,7 +5,7 @@ visual question answering on real world docs lik invoice, pdfs, etc
 
 from transformers import pipeline
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 class LayoutLMDocumentQA(BaseMultiModalModel):
@@ -17,7 +17,7 @@ class LayoutLMDocumentQA(BaseMultiModalModel):
         task (str, optional): [description]. Defaults to "document-question-answering".
 
     Usage:
-    >>> from swarms_models import LayoutLMDocumentQA
+    >>> from swarm_models import LayoutLMDocumentQA
     >>> model = LayoutLMDocumentQA()
     >>> out = model("What is the total amount?", "path/to/img.png")
     >>> print(out)

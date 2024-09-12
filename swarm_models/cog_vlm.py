@@ -13,7 +13,7 @@ from transformers import (
     TextIteratorStreamer,
 )
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 from swarms.utils.loguru_logger import logger
 
 MODEL_PATH = "THUDM/cogvlm-chat-hf"

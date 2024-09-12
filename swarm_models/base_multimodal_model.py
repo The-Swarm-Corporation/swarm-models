@@ -30,7 +30,7 @@ class BaseMultiModalModel(BaseStructure):
         retries (Optional[int], optional): Retries. Defaults to 3.
 
     Examples:
-        >>> from swarms_models.base_multimodal_model import BaseMultiModalModel
+        >>> from swarm_models.base_multimodal_model import BaseMultiModalModel
         >>> model = BaseMultiModalModel()
         >>> model.run("Generate a summary of this text")
         >>> model.run("Generate a summary of this text", "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png")

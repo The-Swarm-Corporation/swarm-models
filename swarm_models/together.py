@@ -5,7 +5,7 @@ from typing import Optional
 import requests
 from dotenv import load_dotenv
 
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 
 # Load environment variables
 load_dotenv()
@@ -41,7 +41,7 @@ class TogetherLLM(BaseLLM):
 
     Examples:
     ---------
-    >>> from swarms_models import GPT4VisionAPI
+    >>> from swarm_models import GPT4VisionAPI
     >>> llm = GPT4VisionAPI()
     >>> task = "What is the color of the object?"
     >>> img = "https://i.imgur.com/2M2ZGwC.jpeg"

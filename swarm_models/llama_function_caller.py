@@ -12,7 +12,7 @@ from transformers import (
     BitsAndBytesConfig,
     TextStreamer,
 )
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 
 
 class LlamaFunctionCaller(BaseLLM):

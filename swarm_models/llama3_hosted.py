@@ -1,6 +1,6 @@
 import requests
 import json
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 
 
 class llama3Hosted(BaseLLM):

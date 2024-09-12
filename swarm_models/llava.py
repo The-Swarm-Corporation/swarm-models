@@ -5,7 +5,7 @@ import requests
 from PIL import Image
 from transformers import AutoProcessor, LlavaForConditionalGeneration
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 class LavaMultiModal(BaseMultiModalModel):

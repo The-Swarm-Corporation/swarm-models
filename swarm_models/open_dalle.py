@@ -3,7 +3,7 @@ from typing import Any, Optional
 import torch
 from diffusers import AutoPipelineForText2Image
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 class OpenDalle(BaseMultiModalModel):
@@ -15,7 +15,7 @@ class OpenDalle(BaseMultiModalModel):
         device (str): The device to be used for computation. Defaults to "cuda".
 
     Examples:
-        >>> from swarms_models.open_dalle import OpenDalle
+        >>> from swarm_models.open_dalle import OpenDalle
         >>> od = OpenDalle()
         >>> od.run("A picture of a cat")
 

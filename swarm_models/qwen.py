@@ -4,7 +4,7 @@ from typing import Optional, Tuple
 from PIL import Image
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 @dataclass

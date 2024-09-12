@@ -1,4 +1,4 @@
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 from pydantic import BaseModel
 from typing import List, Dict
 import openai

@@ -7,7 +7,7 @@ from transformers import (
     FuyuProcessor,
 )
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 class Fuyu(BaseMultiModalModel):
@@ -26,7 +26,7 @@ class Fuyu(BaseMultiModalModel):
 
 
     Examples:
-    >>> from swarms_models import Fuyu
+    >>> from swarm_models import Fuyu
     >>> model = Fuyu()
     >>> model.run("Hello, world!", "https://upload.wikimedia.org/wikipedia/commons/8/86/Id%C3%A9fix.JPG")
     """

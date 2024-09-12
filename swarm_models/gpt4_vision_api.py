@@ -9,7 +9,7 @@ import requests
 from dotenv import load_dotenv
 from termcolor import colored
 from swarms.utils.loguru_logger import logger
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 # Load environment variables
 load_dotenv()
@@ -47,7 +47,7 @@ class GPT4VisionAPI(BaseMultiModalModel):
 
     Examples:
     ---------
-    >>> from swarms_models import GPT4VisionAPI
+    >>> from swarm_models import GPT4VisionAPI
     >>> llm = GPT4VisionAPI()
     >>> task = "What is the color of the object?"
     >>> img = "https://i.imgur.com/2M2ZGwC.jpeg"
@@ -188,7 +188,7 @@ class GPT4VisionAPI(BaseMultiModalModel):
         Examples
         --------
 
-        >>> from swarms_models import GPT4VisionAPI
+        >>> from swarm_models import GPT4VisionAPI
         >>> llm = GPT4VisionAPI()
         >>> video = "video.mp4"
         >>> base64_frames = llm.process_video(video)

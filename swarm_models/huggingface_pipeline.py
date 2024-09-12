@@ -3,7 +3,7 @@ from abc import abstractmethod
 import torch
 from termcolor import colored
 
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 from transformers.pipelines import pipeline
 
 

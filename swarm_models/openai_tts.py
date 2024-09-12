@@ -5,7 +5,7 @@ import sys
 import requests
 from dotenv import load_dotenv
 
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 
 try:
     import wave
@@ -41,7 +41,7 @@ class OpenAITTS(BaseLLM):
 
 
     Examples:
-    >>> from swarms_models.openai_tts import OpenAITTS
+    >>> from swarm_models.openai_tts import OpenAITTS
     >>> tts = OpenAITTS(
     ...     model_name = "tts-1-1106",
     ...     proxy_url = "https://api.openai.com/v1/audio/speech",

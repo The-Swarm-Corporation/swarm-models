@@ -4,7 +4,7 @@ import torch
 from termcolor import colored
 from transformers import AutoProcessor, IdeficsForVisionText2Text
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 def autodetect_device():
@@ -55,7 +55,7 @@ class Idefics(BaseMultiModalModel):
 
     # Usage
     ```
-    from swarms_models import idefics
+    from swarm_models import idefics
 
     model = idefics()
 

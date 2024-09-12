@@ -2,7 +2,7 @@ import requests
 from PIL import Image
 from transformers import ViltForQuestionAnswering, ViltProcessor
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 
 class Vilt(BaseMultiModalModel):

@@ -1,40 +1,40 @@
 from typing import List, Union
 
-from swarms_models.base_embedding_model import BaseEmbeddingModel
-from swarms_models.base_llm import BaseLLM
-from swarms_models.base_multimodal_model import BaseMultiModalModel
-from swarms_models.fuyu import Fuyu  # noqa: E402
-from swarms_models.gpt4_vision_api import GPT4VisionAPI  # noqa: E402
-from swarms_models.huggingface import HuggingfaceLLM  # noqa: E402
-from swarms_models.idefics import Idefics  # noqa: E402
-from swarms_models.kosmos_two import Kosmos  # noqa: E402
-from swarms_models.layoutlm_document_qa import LayoutLMDocumentQA
-from swarms_models.llama3_hosted import llama3Hosted
-from swarms_models.llava import LavaMultiModal  # noqa: E402
-from swarms_models.nougat import Nougat  # noqa: E402
-from swarms_models.openai_embeddings import OpenAIEmbeddings
-from swarms_models.openai_function_caller import OpenAIFunctionCaller
-from swarms_models.openai_tts import OpenAITTS  # noqa: E402
-from swarms_models.palm import GooglePalm as Palm  # noqa: E402
-from swarms_models.popular_llms import Anthropic as Anthropic
-from swarms_models.popular_llms import (
+from swarm_models.base_embedding_model import BaseEmbeddingModel
+from swarm_models.base_llm import BaseLLM
+from swarm_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.fuyu import Fuyu  # noqa: E402
+from swarm_models.gpt4_vision_api import GPT4VisionAPI  # noqa: E402
+from swarm_models.huggingface import HuggingfaceLLM  # noqa: E402
+from swarm_models.idefics import Idefics  # noqa: E402
+from swarm_models.kosmos_two import Kosmos  # noqa: E402
+from swarm_models.layoutlm_document_qa import LayoutLMDocumentQA
+from swarm_models.llama3_hosted import llama3Hosted
+from swarm_models.llava import LavaMultiModal  # noqa: E402
+from swarm_models.nougat import Nougat  # noqa: E402
+from swarm_models.openai_embeddings import OpenAIEmbeddings
+from swarm_models.openai_function_caller import OpenAIFunctionCaller
+from swarm_models.openai_tts import OpenAITTS  # noqa: E402
+from swarm_models.palm import GooglePalm as Palm  # noqa: E402
+from swarm_models.popular_llms import Anthropic as Anthropic
+from swarm_models.popular_llms import (
     AzureOpenAILLM as AzureOpenAI,
 )
-from swarms_models.popular_llms import (
+from swarm_models.popular_llms import (
     CohereChat as Cohere,
 )
-from swarms_models.popular_llms import FireWorksAI, OctoAIChat
-from swarms_models.popular_llms import (
+from swarm_models.popular_llms import FireWorksAI, OctoAIChat
+from swarm_models.popular_llms import (
     OpenAIChatLLM as OpenAIChat,
 )
-from swarms_models.popular_llms import (
+from swarm_models.popular_llms import (
     OpenAILLM as OpenAI,
 )
-from swarms_models.popular_llms import ReplicateChat as Replicate
-from swarms_models.qwen import QwenVLMultiModal  # noqa: E402
-from swarms_models.sampling_params import SamplingParams
-from swarms_models.together import TogetherLLM  # noqa: E402
-from swarms_models.vilt import Vilt  # noqa: E402
+from swarm_models.popular_llms import ReplicateChat as Replicate
+from swarm_models.qwen import QwenVLMultiModal  # noqa: E402
+from swarm_models.sampling_params import SamplingParams
+from swarm_models.together import TogetherLLM  # noqa: E402
+from swarm_models.vilt import Vilt  # noqa: E402
 from swarms.structs.base_structure import BaseStructure
 from swarms.utils.loguru_logger import logger
 

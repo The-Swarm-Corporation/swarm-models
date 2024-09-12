@@ -5,7 +5,7 @@ from typing import List, Optional
 
 from diffusers.utils import export_to_video
 
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 
 
 class BaseTextToVideo(BaseLLM):

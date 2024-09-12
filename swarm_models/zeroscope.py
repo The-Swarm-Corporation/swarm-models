@@ -33,7 +33,7 @@ class ZeroscopeTTV:
             Performs forward pass on the input task and returns the path of the generated video.
 
     Examples:
-        >>> from swarms_models
+        >>> from swarm_models
         >>> zeroscope = ZeroscopeTTV()
         >>> task = "A person is walking on the street."
         >>> video_path = zeroscope(task)

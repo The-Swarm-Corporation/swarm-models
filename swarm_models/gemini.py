@@ -5,7 +5,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from PIL import Image
 
-from swarms_models.base_multimodal_model import BaseMultiModalModel
+from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 try:
     import google.generativeai as genai
@@ -62,7 +62,7 @@ class Gemini(BaseMultiModalModel):
 
 
     Examples:
-        >>> from swarms_models import Gemini
+        >>> from swarm_models import Gemini
         >>> gemini = Gemini()
         >>> gemini.run(
                 task="A dog",

@@ -26,7 +26,7 @@ class Nougat:
         max_new_tokens: int, default=30
 
     Usage:
-    >>> from swarms_models.nougat import Nougat
+    >>> from swarm_models.nougat import Nougat
     >>> nougat = Nougat()
     >>> nougat("path/to/image.png")
 

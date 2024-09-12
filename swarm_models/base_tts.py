@@ -2,7 +2,7 @@ import wave
 from abc import abstractmethod
 from typing import Optional
 
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 
 
 class BaseTTSModel(BaseLLM):

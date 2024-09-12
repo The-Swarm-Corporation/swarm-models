@@ -11,7 +11,7 @@ from transformers import (
     BitsAndBytesConfig,
 )
 
-from swarms_models.base_llm import BaseLLM
+from swarm_models.base_llm import BaseLLM
 
 
 class HuggingfaceLLM(BaseLLM):
