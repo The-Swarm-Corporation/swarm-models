@@ -4,7 +4,7 @@ import os
 import time
 from abc import abstractmethod
 from typing import List, Optional
-from swarms.structs.base_structure import BaseStructure
+from swarm_models.structs.base_structure import BaseStructure
 
 
 class BaseLLM(BaseStructure):

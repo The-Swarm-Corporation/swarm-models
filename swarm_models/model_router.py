@@ -35,8 +35,8 @@ from swarm_models.qwen import QwenVLMultiModal  # noqa: E402
 from swarm_models.sampling_params import SamplingParams
 from swarm_models.together import TogetherLLM  # noqa: E402
 from swarm_models.vilt import Vilt  # noqa: E402
-from swarms.structs.base_structure import BaseStructure
-from swarms.utils.loguru_logger import logger
+from swarm_models.structs.base_structure import BaseStructure
+from swarm_models.utils.loguru_logger import logger
 
 # New type BaseLLM and BaseEmbeddingModel and BaseMultimodalModel
 omni_model_type = Union[

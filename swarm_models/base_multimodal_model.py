@@ -6,7 +6,7 @@ from abc import abstractmethod
 from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 from typing import List, Optional, Tuple
-from swarms.structs.base_structure import BaseStructure
+from swarm_models.structs.base_structure import BaseStructure
 import requests
 from PIL import Image
 from termcolor import colored

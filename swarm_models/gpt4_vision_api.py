@@ -8,7 +8,7 @@ import aiohttp
 import requests
 from dotenv import load_dotenv
 from termcolor import colored
-from swarms.utils.loguru_logger import logger
+from swarm_models.utils.loguru_logger import logger
 from swarm_models.base_multimodal_model import BaseMultiModalModel
 
 # Load environment variables
