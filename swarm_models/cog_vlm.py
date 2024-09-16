@@ -14,7 +14,7 @@ from transformers import (
 )
 
 from swarm_models.base_multimodal_model import BaseMultiModalModel
-from swarm_models.utils.loguru_logger import logger
+from loguru import logger
 
 MODEL_PATH = "THUDM/cogvlm-chat-hf"
 TOKENIZER_PATH = "lmsys/vicuna-7b-v1.5"

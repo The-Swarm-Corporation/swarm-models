@@ -8,16 +8,6 @@
 **Leverage APIs with Unparalleled Speed and Security**
 
 
-### **Install Now**
-
-```bash
-$ pip install swarm-models
-```
-
-[Get Started](#get-started-now)
-
----
-
 ## **Why Swarm Models?**
 
 - **Multi-Provider Support**: Effortlessly integrate APIs from various providers into your projects.
@@ -38,7 +28,7 @@ Swarm Models simplifies the way you interact with different APIs by providing a 
 ### **1. Install Swarm Models**
 
 ```bash
-$ pip install swarm-models
+$ pip3 install swarm-models
 ```
 
 ### **2. Initialize a Model**
@@ -84,7 +74,7 @@ model = OpenAIChat(openai_api_key=api_key, model_name="gpt-4o-mini")
 
 # Query the model with a question
 out = model(
-    "What is the best state to register a business in the US for the least amount of taxes?"
+   "What is the best state to register a business in the US for the least amount of taxes?"
 )
 
 # Print the model's response

@@ -6,7 +6,9 @@ from dataclasses import dataclass
 import numpy as np
 from typing import Callable
 from swarm_models.artifacts.text_artifact import TextArtifact
-from swarm_models.utils.exponential_backoff import ExponentialBackoffMixin
+from swarm_models.utils.exponential_backoff import (
+    ExponentialBackoffMixin,
+)
 
 
 @dataclass
