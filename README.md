@@ -96,13 +96,13 @@ Ready to streamline your API integrations and boost your application's performan
 
 2. **Explore the Documentation**
 
-   Dive into our comprehensive [Documentation](https://example.com/docs) to learn more about the available models and features.
+   Dive into our comprehensive [Documentation](https://docs.swarms.world) to learn more about the available models and features.
 
 3. **Join the Community**
 
    Connect with other developers on our [GitHub](https://github.com/swarm-models) and contribute to the project.
 
-[Download Now](https://pypi.org/project/swarm-models/) | [Documentation](https://example.com/docs) | [GitHub](https://github.com/swarm-models)
+[Download Now](https://pypi.org/project/swarm-models/) | [Documentation](https://example.com/docs) | [GitHub](https://github.com/The-Swarm-Corporation/swarm-models)
 
 ---
 
@@ -110,7 +110,7 @@ Ready to streamline your API integrations and boost your application's performan
 
 **Q:** *Which providers are supported?*
 
-**A:** Swarm Models supports a wide range of API providers. Check out the [documentation](https://example.com/docs/providers) for a full list.
+**A:** Swarm Models supports a wide range of API providers. Check out the [documentation](https://docs.swarms.world) for a full list.
 
 **Q:** *How do I secure my API keys?*
 
