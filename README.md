@@ -21,6 +21,29 @@
 
 ---
 
+## **Code Example**
+
+```python
+from swarm_models import OpenAIChat
+import os
+
+# Get the OpenAI API key from the environment variable
+api_key = os.getenv("OPENAI_API_KEY")
+
+# Create an instance of the OpenAIChat class
+model = OpenAIChat(openai_api_key=api_key, model_name="gpt-4o-mini")
+
+# Query the model with a question
+out = model(
+   "What is the best state to register a business in the US for the least amount of taxes?"
+)
+
+# Print the model's response
+print(out)
+```
+
+
+
 ## **How It Works**
 
 Swarm Models simplifies the way you interact with different APIs by providing a unified interface for all models.
@@ -47,18 +70,19 @@ Import the desired model from the package and initialize it with your API key or
 ```python
 from swarm_models import YourDesiredModel
 
-model = YourDesiredModel(api_key='your_api_key')
+model = YourDesiredModel(api_key='your_api_key', *args, **kwargs)
 ```
 
 ### **4. Run Your Task**
 
-Use the `.run(task)` method or simply call the model with your task.
+Use the `.run(task)` method or simply call the model like `model(task)` with your task.
 
 ```python
 task = "Define your task here"
 result = model.run(task)
+
 # Or equivalently
-result = model(task)
+#result = model(task)
 ```
 
 ### **5. Enjoy the Results**
@@ -69,26 +93,6 @@ print(result)
 
 ---
 
-## **Code Example**
-
-```python
-from swarm_models import OpenAIChat
-import os
-
-# Get the OpenAI API key from the environment variable
-api_key = os.getenv("OPENAI_API_KEY")
-
-# Create an instance of the OpenAIChat class
-model = OpenAIChat(openai_api_key=api_key, model_name="gpt-4o-mini")
-
-# Query the model with a question
-out = model(
-   "What is the best state to register a business in the US for the least amount of taxes?"
-)
-
-# Print the model's response
-print(out)
-```
 
 ---
 
