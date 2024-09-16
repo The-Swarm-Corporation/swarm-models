@@ -1,4 +1,4 @@
-from swarm_models.models import Palm
+from swarm_models import Palm
 
 palm = Palm()
 

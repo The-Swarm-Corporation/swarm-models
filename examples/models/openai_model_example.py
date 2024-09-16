@@ -1,5 +1,5 @@
 import os
-from swarm_models.models import OpenAIChat
+from swarm_models import OpenAIChat
 
 # Load doten
 openai = OpenAIChat(

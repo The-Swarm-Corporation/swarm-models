@@ -1,5 +1,5 @@
 # Import the idefics model from the swarms.models module
-from swarm_models.models import Idefics
+from swarm_models import Idefics
 
 # Create an instance of the idefics model
 model = Idefics()
