@@ -5,7 +5,7 @@
 
 
 
-**Leverage APIs with Unparalleled Speed and Security**
+**Leverage LLM APIs with Unparalleled Speed, Security, and Reliability**
 
 
 ## **Why Swarm Models?**
@@ -31,7 +31,16 @@ Swarm Models simplifies the way you interact with different APIs by providing a 
 $ pip3 install swarm-models
 ```
 
-### **2. Initialize a Model**
+### **2. Set Your Keys**
+
+```bash
+OPENAI_API_KEY="your_openai_api_key"
+GROQ_API_KEY="your_groq_api_key"
+ANTHROPIC_API_KEY="your_anthropic_api_key"
+AZURE_OPENAI_API_KEY="your_azure_openai_api_key"
+```
+
+### **3. Initialize a Model**
 
 Import the desired model from the package and initialize it with your API key or necessary configuration.
 
@@ -41,7 +50,7 @@ from swarm_models import YourDesiredModel
 model = YourDesiredModel(api_key='your_api_key')
 ```
 
-### **3. Run Your Task**
+### **4. Run Your Task**
 
 Use the `.run(task)` method or simply call the model with your task.
 
@@ -52,7 +61,7 @@ result = model.run(task)
 result = model(task)
 ```
 
-### **4. Enjoy the Results**
+### **5. Enjoy the Results**
 
 ```python
 print(result)
