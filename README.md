@@ -73,21 +73,22 @@ print(result)
 ## **Code Example**
 
 ```python
-from swarm_models import TextAnalyzer
+from swarm_models import OpenAIChat
+import os
 
-# Initialize the model
-analyzer = TextAnalyzer(api_key='your_api_key')
+# Get the OpenAI API key from the environment variable
+api_key = os.getenv("OPENAI_API_KEY")
 
-# Define your task
-task = "Analyze the sentiment of this text."
+# Create an instance of the OpenAIChat class
+model = OpenAIChat(openai_api_key=api_key, model_name="gpt-4o-mini")
 
-# Run the task
-analysis = analyzer.run(task)
-# Or simply
-analysis = analyzer(task)
+# Query the model with a question
+out = model(
+    "What is the best state to register a business in the US for the least amount of taxes?"
+)
 
-# Output the result
-print(analysis)
+# Print the model's response
+print(out)
 ```
 
 ---
