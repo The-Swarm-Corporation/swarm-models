@@ -115,6 +115,30 @@ Ready to streamline your API integrations and boost your application's performan
 
 ---
 
+## **Available Models**
+
+| Model Name                | Description                                           |
+|---------------------------|-------------------------------------------------------|
+| `OpenAIChat`              | Chat model for OpenAI's GPT-3 and GPT-4 APIs.       |
+| `Anthropic`               | Model for interacting with Anthropic's APIs.         |
+| `AzureOpenAI`             | Azure's implementation of OpenAI's models.           |
+| `Dalle3`                  | Model for generating images from text prompts.       |
+| `NvidiaLlama31B`         | Llama model for causal language generation.           |
+| `Fuyu`                    | Multi-modal model for image and text processing.     |
+| `Gemini`                  | Multi-modal model for vision and language tasks.     |
+| `Vilt`                    | Vision-and-Language Transformer for question answering.|
+| `TogetherLLM`             | Model for collaborative language tasks.               |
+| `FireWorksAI`             | Model for generating creative content.                |
+| `ReplicateChat`           | Chat model for replicating conversations.             |
+| `HuggingfaceLLM`          | Interface for Hugging Face models.                    |
+| `CogVLMMultiModal`        | Multi-modal model for vision and language tasks.     |
+| `LayoutLMDocumentQA`      | Model for document question answering.                |
+| `GPT4VisionAPI`           | Model for analyzing images with GPT-4 capabilities.  |
+| `LlamaForCausalLM`        | Causal language model from the Llama family.         |
+
+
+
+
 ## **Frequently Asked Questions**
 
 **Q:** *Which providers are supported?*
