@@ -22,7 +22,7 @@ Swarm Models provides a unified, secure, and highly scalable interface for inter
 ---
 
 
-## **How It Works**
+## **Onboarding**
 
 Swarm Models simplifies the way you interact with different APIs by providing a unified interface for all models.
 
