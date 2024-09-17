@@ -139,6 +139,7 @@ Ready to streamline your API integrations and boost your application's performan
 | `LayoutLMDocumentQA`      | Model for document question answering.                |
 | `GPT4VisionAPI`           | Model for analyzing images with GPT-4 capabilities.  |
 | `LlamaForCausalLM`        | Causal language model from the Llama family.         |
+| `GroundedSAMTwo`          | Analyzes and track objects in images. GPU Only        |
 
 
 

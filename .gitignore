@@ -12,6 +12,8 @@ __pycache__/
 .Python
 build/
 develop-eggs/
+agent_worpace
+agent_worpace
 dist/
 downloads/
 eggs/

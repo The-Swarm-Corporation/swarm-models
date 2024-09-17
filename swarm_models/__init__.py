@@ -1,4 +1,3 @@
-from swarm_models.base_embedding_model import BaseEmbeddingModel
 from swarm_models.base_llm import BaseLLM  # noqa: E402
 from swarm_models.base_multimodal_model import BaseMultiModalModel
 from swarm_models.fuyu import Fuyu  # noqa: E402
@@ -29,7 +28,6 @@ from swarm_models.popular_llms import (
 )
 from swarm_models.popular_llms import ReplicateChat as Replicate
 from swarm_models.qwen import QwenVLMultiModal  # noqa: E402
-from swarm_models.sampling_params import SamplingParams, SamplingType
 from swarm_models.together import TogetherLLM  # noqa: E402
 from swarm_models.model_types import (  # noqa: E402
     AudioModality,
@@ -42,9 +40,10 @@ from swarm_models.vilt import Vilt  # noqa: E402
 from swarm_models.popular_llms import FireWorksAI
 from swarm_models.openai_function_caller import OpenAIFunctionCaller
 from swarm_models.ollama_model import OllamaModel
+from swarm_models.sam_two import GroundedSAMTwo
+from swarm_models.utils import *  # NOQA
 
 __all__ = [
-    "BaseEmbeddingModel",
     "BaseLLM",
     "BaseMultiModalModel",
     "Fuyu",
@@ -65,8 +64,6 @@ __all__ = [
     "OctoAIChat",
     "QwenVLMultiModal",
     "Replicate",
-    "SamplingParams",
-    "SamplingType",
     "TogetherLLM",
     "AudioModality",
     "ImageModality",
@@ -79,4 +76,5 @@ __all__ = [
     "FireWorksAI",
     "OpenAIFunctionCaller",
     "OllamaModel",
+    "GroundedSAMTwo",
 ]

@@ -15,7 +15,7 @@ except ImportError:
 class Message(BaseModel):
     role: str = Field(
         ...,
-        regex="^(user|system|assistant)$",
+        pattern="^(user|system|assistant)$",
         description="The role of the message sender.",
     )
     content: str = Field(

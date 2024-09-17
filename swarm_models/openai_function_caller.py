@@ -1,7 +1,7 @@
 import openai
 from pydantic import BaseModel
 import os
-from swarm_models.utils.loguru_logger import logger
+from loguru import logger
 from swarm_models.base_llm import BaseLLM
 from typing import List
 

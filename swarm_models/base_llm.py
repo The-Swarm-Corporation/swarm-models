@@ -4,10 +4,9 @@ import os
 import time
 from abc import abstractmethod
 from typing import List, Optional
-from swarm_models.structs.base_structure import BaseStructure
 
 
-class BaseLLM(BaseStructure):
+class BaseLLM:
     """Abstract Language Model that defines the interface for all language models
 
     Args:
