@@ -5,7 +5,7 @@
 
 Swarm Models provides a unified, secure, and highly scalable interface for interacting with multiple LLM and multi-modal APIs across different providers. It is built to streamline your API integrations, ensuring production-grade reliability and robust performance.
 
-### **Key Features**:
+## **Key Features**:
 
 - **Multi-Provider Support**: Integrate seamlessly with APIs from OpenAI, Anthropic, Azure, and more.
   
@@ -145,14 +145,3 @@ print(out)
 Swarm Models is released under the [MIT License](https://github.com/The-Swarm-Corporation/swarm-models/LICENSE).
 
 ---
-
-
-
-
-
-
-
-
-
-
-
