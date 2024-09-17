@@ -18,7 +18,7 @@ class GroundedSAMTwo:
     def __init__(
         self,
         ontology_dict: Dict[str, str],
-        model_name: str = "Grounding DINO",
+        model_name: str = None,
         grounding_dino_box_threshold: float = 0.25,
         extension: str = "jpg",
         output_dir: Optional[str] = None,
@@ -88,8 +88,7 @@ class GroundedSAMTwo:
             self._install_and_import()  # Install and import required packages
             self.base_model = GroundedSAM2(
                 ontology=CaptionOntology(self.ontology_dict),
-                model=self.model_name,
-                grounding_dino_box_threshold=self.grounding_dino_box_threshold,
+                # grounding_dino_box_threshold=self.grounding_dino_box_threshold,
             )
             logger.info("GroundedSAM2 model loaded.")
 
