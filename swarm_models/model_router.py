@@ -1,8 +1,4 @@
-from typing import List, Union
-
-from swarm_models.base_embedding_model import BaseEmbeddingModel
-from swarm_models.base_llm import BaseLLM
-from swarm_models.base_multimodal_model import BaseMultiModalModel
+from typing import List, Callable
 from swarm_models.fuyu import Fuyu  # noqa: E402
 from swarm_models.gpt4_vision_api import GPT4VisionAPI  # noqa: E402
 from swarm_models.huggingface import HuggingfaceLLM  # noqa: E402
@@ -13,7 +9,6 @@ from swarm_models.llama3_hosted import llama3Hosted
 from swarm_models.llava import LavaMultiModal  # noqa: E402
 from swarm_models.nougat import Nougat  # noqa: E402
 from swarm_models.openai_embeddings import OpenAIEmbeddings
-from swarm_models.openai_function_caller import OpenAIFunctionCaller
 from swarm_models.openai_tts import OpenAITTS  # noqa: E402
 from swarm_models.palm import GooglePalm as Palm  # noqa: E402
 from swarm_models.popular_llms import Anthropic as Anthropic
@@ -35,20 +30,16 @@ from swarm_models.qwen import QwenVLMultiModal  # noqa: E402
 from swarm_models.sampling_params import SamplingParams
 from swarm_models.together import TogetherLLM  # noqa: E402
 from swarm_models.vilt import Vilt  # noqa: E402
-from swarm_models.structs.base_structure import BaseStructure
-from swarm_models.utils.loguru_logger import logger
+from loguru import logger
 
-# New type BaseLLM and BaseEmbeddingModel and BaseMultimodalModel
-omni_model_type = Union[
-    BaseLLM, BaseEmbeddingModel, BaseMultiModalModel, callable
-]
-list_of_omni_model_type = List[omni_model_type]
+# # New type BaseLLM and BaseEmbeddingModel and BaseMultimodalModel
+# omni_model_type = Union[
+#     BaseLLM, BaseEmbeddingModel, BaseMultiModalModel, callable
+# ]
+# list_of_Callable = List[Callable]
 
 
 models = [
-    BaseLLM,
-    BaseEmbeddingModel,
-    BaseMultiModalModel,
     Fuyu,
     GPT4VisionAPI,
     HuggingfaceLLM,
@@ -73,28 +64,28 @@ models = [
     TogetherLLM,
     Vilt,
     FireWorksAI,
-    OpenAIFunctionCaller,
+    # OpenAIFunctionCaller,
 ]
 
 
-class ModelRouter(BaseStructure):
+class ModelRouter:
     """
     A router for managing multiple models.
 
     Attributes:
         model_router_id (str): The ID of the model router.
         model_router_description (str): The description of the model router.
-        model_pool (List[omni_model_type]): The list of models in the model pool.
+        model_pool (List[Callable]): The list of models in the model pool.
 
     Methods:
         check_for_models(): Checks if there are any models in the model pool.
-        add_model(model: omni_model_type): Adds a model to the model pool.
-        add_models(models: List[omni_model_type]): Adds multiple models to the model pool.
-        get_model_by_name(model_name: str) -> omni_model_type: Retrieves a model from the model pool by its name.
-        get_multiple_models_by_name(model_names: List[str]) -> List[omni_model_type]: Retrieves multiple models from the model pool by their names.
-        get_model_pool() -> List[omni_model_type]: Retrieves the entire model pool.
-        get_model_by_index(index: int) -> omni_model_type: Retrieves a model from the model pool by its index.
-        get_model_by_id(model_id: str) -> omni_model_type: Retrieves a model from the model pool by its ID.
+        add_model(model: Callable): Adds a model to the model pool.
+        add_models(models: List[Callable]): Adds multiple models to the model pool.
+        get_model_by_name(model_name: str) -> Callable: Retrieves a model from the model pool by its name.
+        get_multiple_models_by_name(model_names: List[str]) -> List[Callable]: Retrieves multiple models from the model pool by their names.
+        get_model_pool() -> List[Callable]: Retrieves the entire model pool.
+        get_model_by_index(index: int) -> Callable: Retrieves a model from the model pool by its index.
+        get_model_by_id(model_id: str) -> Callable: Retrieves a model from the model pool by its ID.
         dict() -> dict: Returns a dictionary representation of the model router.
 
     """
@@ -103,7 +94,7 @@ class ModelRouter(BaseStructure):
         self,
         model_router_id: str = "model_router",
         model_router_description: str = "A router for managing multiple models.",
-        model_pool: List[omni_model_type] = models,
+        model_pool: List[Callable] = models,
         verbose: bool = False,
         *args,
         **kwargs,
@@ -130,12 +121,12 @@ class ModelRouter(BaseStructure):
         if len(self.model_pool) == 0:
             raise ValueError("No models found in model pool.")
 
-    def add_model(self, model: omni_model_type):
+    def add_model(self, model: Callable):
         """
         Adds a model to the model pool.
 
         Args:
-            model (omni_model_type): The model to be added.
+            model (Callable): The model to be added.
 
         Returns:
             str: A success message indicating that the model has been added to the model pool.
@@ -144,12 +135,12 @@ class ModelRouter(BaseStructure):
         self.model_pool.append(model)
         return "Model successfully added to model pool."
 
-    def add_models(self, models: List[omni_model_type]):
+    def add_models(self, models: List[Callable]):
         """
         Adds multiple models to the model pool.
 
         Args:
-            models (List[omni_model_type]): The models to be added.
+            models (List[Callable]): The models to be added.
 
         Returns:
             str: A success message indicating that the models have been added to the model pool.
@@ -158,59 +149,9 @@ class ModelRouter(BaseStructure):
         self.model_pool.extend(models)
         return "Models successfully added to model pool."
 
-    # def query_model_from_langchain(self, model_name: str, *args, **kwargs):
-    #     """
-    #     Query a model from langchain community.
-
-    #     Args:
-    #         model_name (str): The name of the model.
-    #         *args: Additional positional arguments to be passed to the model.
-    #         **kwargs: Additional keyword arguments to be passed to the model.
-
-    #     Returns:
-    #         omni_model_type: The model object.
-
-    #     Raises:
-    #         ValueError: If the model with the given name is not found in the model pool.
-    #     """
-    #     from langchain_community.llms import __getattr__
-
-    #     logger.info(
-    #         f"Querying model {model_name} from langchain community."
-    #     )
-    #     model = __getattr__(model_name)(*args, **kwargs)
-    #     model = self.refactor_model_class_if_invoke_class(model)
-
-    #     return model
-
-    def get_model_by_name(self, model_name: str) -> omni_model_type:
-        """
-        Retrieves a model from the model pool by its name.
-
-        Args:
-            model_name (str): The name of the model.
-
-        Returns:
-            omni_model_type: The model object.
-
-        Raises:
-            ValueError: If the model with the given name is not found in the model pool.
-        """
-        logger.info(f"Retrieving model {model_name} from model pool.")
-        for model in self.model_pool:
-            if model_name in [
-                model.name,
-                model.model_id,
-                model.model_name,
-            ]:
-                return model
-        raise ValueError(
-            f"Model {model_name} not found in model pool."
-        )
-
     def get_multiple_models_by_name(
         self, model_names: List[str]
-    ) -> List[omni_model_type]:
+    ) -> List[Callable]:
         """
         Retrieves multiple models from the model pool by their names.
 
@@ -218,7 +159,7 @@ class ModelRouter(BaseStructure):
             model_names (List[str]): The names of the models.
 
         Returns:
-            List[omni_model_type]: The list of model objects.
+            List[Callable]: The list of model objects.
 
         Raises:
             ValueError: If any of the models with the given names are not found in the model pool.
@@ -231,16 +172,16 @@ class ModelRouter(BaseStructure):
             models.append(self.get_model_by_name(model_name))
         return models
 
-    def get_model_pool(self) -> List[omni_model_type]:
+    def get_model_pool(self) -> List[Callable]:
         """
         Retrieves the entire model pool.
 
         Returns:
-            List[omni_model_type]: The list of model objects in the model pool.
+            List[Callable]: The list of model objects in the model pool.
         """
         return self.model_pool
 
-    def get_model_by_index(self, index: int) -> omni_model_type:
+    def get_model_by_index(self, index: int) -> Callable:
         """
         Retrieves a model from the model pool by its index.
 
@@ -248,42 +189,48 @@ class ModelRouter(BaseStructure):
             index (int): The index of the model in the model pool.
 
         Returns:
-            omni_model_type: The model object.
+            Callable: The model object.
 
         Raises:
             IndexError: If the index is out of range.
         """
         return self.model_pool[index]
 
-    def get_model_by_id(self, model_id: str) -> omni_model_type:
+    def get_model_by_name(self, model_name: str) -> Callable:
         """
-        Retrieves a model from the model pool by its ID.
+        Retrieves a model from the model pool by its name.
 
         Args:
-            model_id (str): The ID of the model.
+            model_name (str): The name of the model.
 
         Returns:
-            omni_model_type: The model object.
+            Callable: The model object.
 
         Raises:
-            ValueError: If the model with the given ID is not found in the model pool.
+            ValueError: If the model with the given name is not found in the model pool.
         """
-        name = model_id
+        logger.info(f"Retrieving model {model_name} from model pool.")
         for model in self.model_pool:
-            if (
-                hasattr(model, "model_id")
-                and name == model.model_id
-                or hasattr(model, "model_name")
-                and name == model.model_name
-                or hasattr(model, "name")
-                and name == model.name
-                or hasattr(model, "model")
-                and name == model.model
-            ):
-                return model
-        raise ValueError(f"Model {model_id} not found in model pool.")
+            # Create a list of possible names to check
+            model_names = []
 
-    def refactor_model_class_if_invoke(self):
+            # Check for the existence of attributes before accessing them
+            if hasattr(model, "name"):
+                model_names.append(model.name)
+            if hasattr(model, "model_id"):
+                model_names.append(model.model_id)
+            if hasattr(model, "model_name"):
+                model_names.append(model.model_name)
+
+            # Check if the model_name is in the list of model names
+            if model_name in model_names:
+                return model
+
+        return model
+
+        # raise ValueError(f"Model {model_name} not found in model pool.")
+
+    def refactor_model_class_if_invoke(self, *args, **kwargs):
         """
         Refactors the model class if it has an 'invoke' method.
 
@@ -294,8 +241,18 @@ class ModelRouter(BaseStructure):
         """
         for model in self.model_pool:
             if hasattr(model, "invoke"):
-                model.run = model.invoke
-                model.__call__ = model.invoke
+                model.run = model.invoke(*args, **kwargs)
+                model.__call__ = model.invoke(*args, **kwargs)
+                logger.info(
+                    f"Refactored model {model.name} to have run and __call__ methods."
+                )
+
+                # Update the model in the model pool
+                self.model_pool[self.model_pool.index(model)] = model
+
+            if hasattr(model, "generate"):
+                model.run = model.invoke(*args, **kwargs)
+                model.__call__ = model.invoke(*args, **kwargs)
                 logger.info(
                     f"Refactored model {model.name} to have run and __call__ methods."
                 )
@@ -326,11 +283,7 @@ class ModelRouter(BaseStructure):
         return model
 
     def find_model_by_name_and_run(
-        self,
-        model_name: str = None,
-        task: str = None,
-        *args,
-        **kwargs,
+        self, model_name: str, task: str, *args, **kwargs
     ) -> str:
         """
         Finds a model by its name and runs a task on it.
@@ -338,8 +291,6 @@ class ModelRouter(BaseStructure):
         Args:
             model_name (str): The name of the model.
             task (str): The task to be run on the model.
-            *args: Additional positional arguments to be passed to the task.
-            **kwargs: Additional keyword arguments to be passed to the task.
 
         Returns:
             str: The result of running the task on the model.
@@ -348,7 +299,24 @@ class ModelRouter(BaseStructure):
             ValueError: If the model with the given name is not found in the model pool.
         """
         model = self.get_model_by_name(model_name)
-        return model.run(task, *args, **kwargs)
+
+        if model is None:
+            raise ValueError(
+                f"Model '{model_name}' not found in the model pool."
+            )
+
+        return model.run(task=task, *args, **kwargs)
+
+
+def run_model_router(
+    model_name: str, task: str, *args, **kwargs
+) -> str:
+    logger.info(
+        f"Running model router with {model_name} on task: {task}"
+    )
+    return ModelRouter().find_model_by_name_and_run(
+        model_name, task, *args, **kwargs
+    )
 
 
 # model = ModelRouter()
@@ -356,4 +324,5 @@ class ModelRouter(BaseStructure):
 # print(model.get_model_pool())
 # print(model.get_model_by_index(0))
 # print(model.get_model_by_id("stability-ai/stable-diffusion:"))
-# # print(model.get_multiple_models_by_name(["gpt-4o", "gpt-4"]))
+# print(model.get_multiple_models_by_name(["gpt-4o", "gpt-4"]))
+print(run_model_router("gpt-4o-mini", "what's your name?"))

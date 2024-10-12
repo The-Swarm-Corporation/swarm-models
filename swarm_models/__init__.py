@@ -28,7 +28,6 @@ from swarm_models.popular_llms import (
 )
 from swarm_models.popular_llms import ReplicateChat as Replicate
 from swarm_models.qwen import QwenVLMultiModal  # noqa: E402
-from swarm_models.together import TogetherLLM  # noqa: E402
 from swarm_models.model_types import (  # noqa: E402
     AudioModality,
     ImageModality,
@@ -42,6 +41,7 @@ from swarm_models.openai_function_caller import OpenAIFunctionCaller
 from swarm_models.ollama_model import OllamaModel
 from swarm_models.sam_two import GroundedSAMTwo
 from swarm_models.utils import *  # NOQA
+from swarm_models.together_llm import TogetherLLM
 
 __all__ = [
     "BaseLLM",

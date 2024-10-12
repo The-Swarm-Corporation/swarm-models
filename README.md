@@ -94,6 +94,53 @@ print(out)
 
 ---
 
+## `TogetherLLM` Documentation
+
+The `TogetherLLM` class is designed to simplify the interaction with Together's LLM models. It provides a straightforward way to run tasks on these models, including support for concurrent and batch processing.
+
+### Initialization
+
+To use `TogetherLLM`, you need to initialize it with your API key, the name of the model you want to use, and optionally, a system prompt. The system prompt is used to provide context to the model for the tasks you will run.
+
+Here's an example of how to initialize `TogetherLLM`:
+```python
+import os
+from swarm_models import TogetherLLM
+
+model_runner = TogetherLLM(
+    api_key=os.environ.get("TOGETHER_API_KEY"),
+    model_name="meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+    system_prompt="You're Larry fink",
+)
+```
+### Running Tasks
+
+Once initialized, you can run tasks on the model using the `run` method. This method takes a task string as an argument and returns the response from the model.
+
+Here's an example of running a single task:
+```python
+task = "How do we allocate capital efficiently in your opinion Larry?"
+response = model_runner.run(task)
+print(response)
+```
+### Running Multiple Tasks Concurrently
+
+`TogetherLLM` also supports running multiple tasks concurrently using the `run_concurrently` method. This method takes a list of task strings and returns a list of responses from the model.
+
+Here's an example of running multiple tasks concurrently:
+```python
+tasks = [
+    "What are the top-performing mutual funds in the last quarter?",
+    "How do I evaluate the risk of a mutual fund?",
+    "What are the fees associated with investing in a mutual fund?",
+    "Can you recommend a mutual fund for a beginner investor?",
+    "How do I diversify my portfolio with mutual funds?",
+]
+responses = model_runner.run_concurrently(tasks)
+for response in responses:
+    print(response)
+```
+
 
 ## **Enterprise-Grade Features**
 
