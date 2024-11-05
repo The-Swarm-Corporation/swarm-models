@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "swarm-models"
-version = "0.1.1"
+version = "0.1.3"
 description = "Swarm Models - Pytorch"
 license = "MIT"
 authors = ["Kye Gomez <kye@apac.ai>"]
@@ -23,7 +23,6 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
-swarms = "*"
 torch = "*"
 transformers = "*"
 diffusers = "*"
@@ -31,6 +30,7 @@ loguru = "*"
 pydantic = "*"
 langchain-community = "0.0.29"
 together = "*"
+python-dotenv = "*"
 
 
 

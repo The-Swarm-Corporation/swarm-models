@@ -1,6 +1,6 @@
 from swarm_models.base_llm import BaseLLM  # noqa: E402
 from swarm_models.base_multimodal_model import BaseMultiModalModel
-from swarm_models.fuyu import Fuyu  # noqa: E402
+# from swarm_models.fuyu import Fuyu  # noqa: E402
 from swarm_models.gpt4_vision_api import GPT4VisionAPI  # noqa: E402
 from swarm_models.huggingface import HuggingfaceLLM  # noqa: E402
 from swarm_models.idefics import Idefics  # noqa: E402
@@ -46,7 +46,7 @@ from swarm_models.together_llm import TogetherLLM
 __all__ = [
     "BaseLLM",
     "BaseMultiModalModel",
-    "Fuyu",
+    # "Fuyu",
     "GPT4VisionAPI",
     "HuggingfaceLLM",
     "Idefics",

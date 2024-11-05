@@ -192,3 +192,10 @@ for response in responses:
 Swarm Models is released under the [MIT License](https://github.com/The-Swarm-Corporation/swarm-models/LICENSE).
 
 ---
+
+
+# Todo
+
+- [ ] Add cohere models command r
+- [ ] Add gemini and google ai studio
+- [ ] Integrate ollama extensively
