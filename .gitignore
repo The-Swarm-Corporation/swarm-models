@@ -13,6 +13,7 @@ agent_worpace
 .Python
 build/
 develop-eggs/
+agent_workspace/
 agent_worpace
 agent_worpace
 dist/

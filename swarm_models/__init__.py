@@ -1,11 +1,7 @@
 from swarm_models.base_llm import BaseLLM  # noqa: E402
 from swarm_models.base_multimodal_model import BaseMultiModalModel
-
-# from swarm_models.fuyu import Fuyu  # noqa: E402
 from swarm_models.gpt4_vision_api import GPT4VisionAPI  # noqa: E402
 from swarm_models.huggingface import HuggingfaceLLM  # noqa: E402
-from swarm_models.idefics import Idefics  # noqa: E402
-from swarm_models.kosmos_two import Kosmos  # noqa: E402
 from swarm_models.layoutlm_document_qa import LayoutLMDocumentQA
 from swarm_models.llama3_hosted import llama3Hosted
 from swarm_models.llava import LavaMultiModal  # noqa: E402
@@ -51,8 +47,7 @@ __all__ = [
     # "Fuyu",
     "GPT4VisionAPI",
     "HuggingfaceLLM",
-    "Idefics",
-    "Kosmos",
+    # "Idefics",
     "LayoutLMDocumentQA",
     "LavaMultiModal",
     "Nougat",
