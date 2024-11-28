@@ -156,26 +156,34 @@ for response in responses:
 
 ## **Available Models**
 
-| Model Name                | Description                                           |
-|---------------------------|-------------------------------------------------------|
-| `OpenAIChat`              | Chat model for OpenAI's GPT-3 and GPT-4 APIs.       |
-| `Anthropic`               | Model for interacting with Anthropic's APIs.         |
-| `AzureOpenAI`             | Azure's implementation of OpenAI's models.           |
-| `Dalle3`                  | Model for generating images from text prompts.       |
-| `NvidiaLlama31B`         | Llama model for causal language generation.           |
-| `Fuyu`                    | Multi-modal model for image and text processing.     |
-| `Gemini`                  | Multi-modal model for vision and language tasks.     |
-| `Vilt`                    | Vision-and-Language Transformer for question answering.|
-| `TogetherLLM`             | Model for collaborative language tasks.               |
-| `FireWorksAI`             | Model for generating creative content.                |
-| `ReplicateChat`           | Chat model for replicating conversations.             |
-| `HuggingfaceLLM`          | Interface for Hugging Face models.                    |
-| `CogVLMMultiModal`        | Multi-modal model for vision and language tasks.     |
-| `LayoutLMDocumentQA`      | Model for document question answering.                |
-| `GPT4VisionAPI`           | Model for analyzing images with GPT-4 capabilities.  |
-| `LlamaForCausalLM`        | Causal language model from the Llama family.         |
-| `GroundedSAMTwo`          | Analyzes and track objects in images. GPU Only        |
-
+| Model Name                | Import Path                                           |
+|---------------------------|------------------------------------------------------|
+| BaseLLM                   | `from swarm_models.base_llm import BaseLLM`         |
+| BaseMultiModalModel       | `from swarm_models.base_multimodal_model import BaseMultiModalModel` |
+| GPT4VisionAPI             | `from swarm_models.gpt4_vision_api import GPT4VisionAPI` |
+| HuggingfaceLLM            | `from swarm_models.huggingface import HuggingfaceLLM` |
+| LayoutLMDocumentQA        | `from swarm_models.layoutlm_document_qa import LayoutLMDocumentQA` |
+| llama3Hosted              | `from swarm_models.llama3_hosted import llama3Hosted` |
+| LavaMultiModal            | `from swarm_models.llava import LavaMultiModal`     |
+| Nougat                    | `from swarm_models.nougat import Nougat`            |
+| OpenAIEmbeddings          | `from swarm_models.openai_embeddings import OpenAIEmbeddings` |
+| OpenAITTS                 | `from swarm_models.openai_tts import OpenAITTS`     |
+| GooglePalm                | `from swarm_models.palm import GooglePalm as Palm`  |
+| Anthropic                 | `from swarm_models.popular_llms import Anthropic as Anthropic` |
+| AzureOpenAI               | `from swarm_models.popular_llms import AzureOpenAILLM as AzureOpenAI` |
+| Cohere                    | `from swarm_models.popular_llms import CohereChat as Cohere` |
+| OctoAIChat                | `from swarm_models.popular_llms import OctoAIChat`  |
+| OpenAIChat                | `from swarm_models.popular_llms import OpenAIChatLLM as OpenAIChat` |
+| OpenAILLM                 | `from swarm_models.popular_llms import OpenAILLM as OpenAI` |
+| Replicate                 | `from swarm_models.popular_llms import ReplicateChat as Replicate` |
+| QwenVLMultiModal          | `from swarm_models.qwen import QwenVLMultiModal`    |
+| FireWorksAI               | `from swarm_models.popular_llms import FireWorksAI`  |
+| Vilt                      | `from swarm_models.vilt import Vilt`                  |
+| TogetherLLM               | `from swarm_models.together_llm import TogetherLLM`  |
+| LiteLLMModel              | `from swarm_models.lite_llm_model import LiteLLMModel` |
+| OpenAIFunctionCaller      | `from swarm_models.openai_function_caller import OpenAIFunctionCaller` |
+| OllamaModel               | `from swarm_models.ollama_model import OllamaModel`   |
+| GroundedSAMTwo            | `from swarm_models.sam_two import GroundedSAMTwo`     |
 
 
 ---

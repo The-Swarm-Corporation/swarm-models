@@ -44,10 +44,8 @@ from swarm_models.lite_llm_model import LiteLLMModel
 __all__ = [
     "BaseLLM",
     "BaseMultiModalModel",
-    # "Fuyu",
     "GPT4VisionAPI",
     "HuggingfaceLLM",
-    # "Idefics",
     "LayoutLMDocumentQA",
     "LavaMultiModal",
     "Nougat",
