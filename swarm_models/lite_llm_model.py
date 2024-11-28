@@ -1,17 +1,20 @@
 from litellm import completion, acompletion
 from loguru import logger
 
+
 class LiteLLMModel:
     """
     This class represents a LiteLLMModel.
     It is used to interact with the LLM model for various tasks.
     """
+
     def __init__(
         self,
         model_name: str = "gpt-4o",
         system_prompt: str = None,
         stream: bool = False,
         temperature: float = 0.5,
+        max_tokens: int = 4000,
     ):
         """
         Initialize the LiteLLMModel with the given parameters.
@@ -20,18 +23,21 @@ class LiteLLMModel:
         self.system_prompt = system_prompt
         self.stream = stream
         self.temperature = temperature
+        self.max_tokens = max_tokens
 
     def _prepare_messages(self, task: str) -> list:
         """
         Prepare the messages for the given task.
         """
         messages = []
-        
+
         if self.system_prompt:  # Check if system_prompt is not None
-            messages.append({"role": "system", "content": self.system_prompt})
-        
+            messages.append(
+                {"role": "system", "content": self.system_prompt}
+            )
+
         messages.append({"role": "user", "content": task})
-        
+
         return messages
 
     def run(self, task: str, *args, **kwargs):
@@ -39,16 +45,20 @@ class LiteLLMModel:
         Run the LLM model for the given task.
         """
         messages = self._prepare_messages(task)
-        
+
         response = completion(
             model=self.model_name,
             messages=messages,
             stream=self.stream,
             temperature=self.temperature,
+            max_completion_tokens=self.max_tokens,
+            max_tokens=self.max_tokens,
             *args,
-            **kwargs
+            **kwargs,
         )
-        content = response.choices[0].message.content  # Accessing the content
+        content = response.choices[
+            0
+        ].message.content  # Accessing the content
         return content
 
     def __call__(self, task: str, *args, **kwargs):
