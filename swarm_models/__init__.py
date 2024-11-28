@@ -1,5 +1,6 @@
 from swarm_models.base_llm import BaseLLM  # noqa: E402
 from swarm_models.base_multimodal_model import BaseMultiModalModel
+
 # from swarm_models.fuyu import Fuyu  # noqa: E402
 from swarm_models.gpt4_vision_api import GPT4VisionAPI  # noqa: E402
 from swarm_models.huggingface import HuggingfaceLLM  # noqa: E402
@@ -42,6 +43,7 @@ from swarm_models.ollama_model import OllamaModel
 from swarm_models.sam_two import GroundedSAMTwo
 from swarm_models.utils import *  # NOQA
 from swarm_models.together_llm import TogetherLLM
+from swarm_models.lite_llm_model import LiteLLMModel
 
 __all__ = [
     "BaseLLM",
@@ -77,4 +79,5 @@ __all__ = [
     "OpenAIFunctionCaller",
     "OllamaModel",
     "GroundedSAMTwo",
+    "LiteLLMModel",
 ]

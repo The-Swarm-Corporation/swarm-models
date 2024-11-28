@@ -19,4 +19,8 @@ if __name__ == "__main__":
     # response_contents = model_runner.run_concurrently(tasks)
     # for response_content in response_contents:
     #     print(response_content)
-    print(model_runner.run("How do we allocate capital efficiently in your opion Larry?"))
+    print(
+        model_runner.run(
+            "How do we allocate capital efficiently in your opion Larry?"
+        )
+    )
