@@ -1,8 +1,8 @@
-torch
-transformers
-diffusers
+#torch
+#transformers
+#diffusers
 loguru 
 pydantic
-langchain-community=="0.0.29"
-together
+#langchain-community=="0.0.29"
+#together
 litellm
