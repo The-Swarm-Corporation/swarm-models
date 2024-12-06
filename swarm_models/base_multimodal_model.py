@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 from typing import List, Optional, Tuple
 import requests
-from PIL import Image
+#from PIL import Image
 from termcolor import colored
 
 
@@ -123,8 +123,8 @@ class BaseMultiModalModel:
         try:
             response = requests.get(img)
             response.raise_for_status()
-            image_pil = Image.open(BytesIO(response.content))
-            return image_pil
+#            image_pil = Image.open(BytesIO(response.content))
+            return None
         except requests.RequestException as error:
             print(
                 f"Error fetching image from {img} and error: {error}"
@@ -138,7 +138,8 @@ class BaseMultiModalModel:
 
     def get_img(self, img: str):
         """Get the image from the path"""
-        image_pil = Image.open(img)
+        #image_pil = Image.open(img)
+        image_pil = None
         return image_pil
 
     def clear_chat_history(self):
