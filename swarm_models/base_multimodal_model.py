@@ -8,8 +8,7 @@ from io import BytesIO
 from typing import List, Optional, Tuple
 import requests
 #from PIL import Image
-from termcolor import colored
-
+#from termcolor import colored
 
 class BaseMultiModalModel:
     """
@@ -285,7 +284,7 @@ class BaseMultiModalModel:
 
     def print_beautiful(self, content: str, color: str = "cyan"):
         """Print Beautifully with termcolor"""
-        content = colored(content, color)
+        #content = colored(content, color)
         print(content)
 
     def stream_response(self, text: str):
