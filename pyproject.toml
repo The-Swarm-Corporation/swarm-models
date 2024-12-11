@@ -4,34 +4,34 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "swarm-models"
-version = "0.2.0"
-description = "Swarm Models - Pytorch"
+version = "0.2.7"
+description = "Swarm Models - TGSC"
 license = "MIT"
 authors = ["Kye Gomez <kye@apac.ai>"]
 homepage = "https://github.com/The-Swarm-Corporation/swarm-models"
 documentation = "https://github.com/The-Swarm-Corporation/swarm-models"  # Add this if you have documentation.
 readme = "README.md"  # Assuming you have a README.md
 repository = "https://github.com/The-Swarm-Corporation/swarm-models"
-keywords = ["artificial intelligence", "deep learning", "optimizers", "Prompt Engineering"]
+keywords = ["artificial intelligence", "deep learning", "optimizers", "Prompt Engineering", "natural language processing", "machine learning", "pytorch", "transformers"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.9"
+    "Programming Language :: Python :: 3.9",
 ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 torch = "*"
 transformers = "*"
-diffusers = "*"
 loguru = "*"
 pydantic = "*"
 langchain-community = "0.0.29"
-together = "*"
 python-dotenv = "*"
 litellm = "*"
+tiktoken = "*"
+ollama = "*"
 
 
 
