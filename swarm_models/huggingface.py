@@ -228,6 +228,7 @@ class HuggingfaceLLM(BaseLLM):
         """
         try:
             inputs = self.tokenizer.encode(task, return_tensors="pt")
+            inputs = inputs.to(self.model.device)
 
             if self.decoding:
                 with torch.no_grad():
