@@ -59,7 +59,7 @@ class GPT4VisionAPI(BaseMultiModalModel):
     def __init__(
         self,
         openai_api_key: str = openai_api_key,
-        model_name: str = "gpt-4-vision-preview",
+        model_name: str = "gpt-4o-mini",
         logging_enabled: bool = False,
         max_workers: int = 10,
         max_tokens: str = 300,
@@ -71,7 +71,7 @@ class GPT4VisionAPI(BaseMultiModalModel):
         *args,
         **kwargs,
     ):
-        super(GPT4VisionAPI).__init__(*args, **kwargs)
+        super(GPT4VisionAPI, self).__init__(*args, **kwargs)
         self.openai_api_key = openai_api_key
         self.logging_enabled = logging_enabled
         self.model_name = model_name
@@ -83,6 +83,7 @@ class GPT4VisionAPI(BaseMultiModalModel):
         self.meta_prompt = meta_prompt
         self.system_prompt = system_prompt
 
+
         if self.logging_enabled:
             logging.basicConfig(level=logging.DEBUG)
         else:
@@ -92,6 +93,7 @@ class GPT4VisionAPI(BaseMultiModalModel):
 
         if self.meta_prompt:
             self.system_prompt = self.meta_prompt_init()
+
 
     def encode_image(self, img: str):
         """Encode image to base64."""
@@ -111,6 +113,63 @@ class GPT4VisionAPI(BaseMultiModalModel):
         response = requests.get(img)
         return base64.b64encode(response.content).decode("utf-8")
 
+    def compose_messages(self, task: str, img: str, img_list: list = None, context: list = None):
+        """Compose the payload for the GPT-4 Vision API, if illegal image paths are provided
+            , None is returned, means the payload is not valid
+
+        Parameters
+        ----------
+        task : str
+            The task to run the model on.
+        img : str
+            The image to run the task on
+        img_list : list
+            A list of images to run the task on
+        context : list
+            A list of context to run the task on
+
+        Returns
+        -------
+        payload : dict
+            The payload for the gpt-4o Vision API
+            if None is returned, then the payload is not valid
+        """
+
+
+        # Compose the messages
+        messages = []
+        # Add the system prompt to the messages
+        messages.append({"role": "system", "content": self.system_prompt})
+        # Add the context to the messages
+        messages = messages + context if context else messages
+
+        # Compose the content
+        content = []
+        # Add the task to the content
+        content.append({"type": "text", "text": task})
+        # Add the images to the content
+        images = [img] if img else []
+        images = images + img_list if img_list else images
+        if len(images) > 0:
+            for image in images:
+                if image:
+                    if os.path.exists(image):
+                        encoded_img = self.encode_image(image)
+                        content.append({"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{encoded_img}"}})
+                    elif image.startswith("http"):
+                        content.append({"type": "image_url", "image_url": {"url": f"{image}"}})
+                    else:
+                        logger.error(f"Image file not found: {image} or not a valid URL")
+                        print(f"Image file not found: {image} or not a valid URL")
+                        return None
+            content = {
+                "role": "user",
+                "content": content
+            }
+            messages.append(content)
+            return messages
+        return None
+
     # Function to handle vision tasks
     def run(
         self,
@@ -118,43 +177,32 @@ class GPT4VisionAPI(BaseMultiModalModel):
         img: str = None,
         multi_imgs: list = None,
         return_json: bool = False,
+        messages: list = None,
         *args,
         **kwargs,
     ):
         """Run the model."""
         try:
-            base64_image = self.encode_image(img)
             headers = {
                 "Content-Type": "application/json",
                 "Authorization": f"Bearer {self.openai_api_key}",
             }
+            if messages is None:
+                messages = self.compose_messages(task, img, multi_imgs, messages)
+
+            if messages is None:
+                raise ValueError("Image path is invalid, please check the image path")
+
             payload = {
                 "model": self.model_name,
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": [self.system_prompt],
-                    },
-                    {
-                        "role": "user",
-                        "content": [
-                            {"type": "text", "text": task},
-                            {
-                                "type": "image_url",
-                                "image_url": {
-                                    "url": f"data:image/jpeg;base64,{base64_image}"
-                                },
-                            },
-                        ],
-                    },
-                ],
-                "max_tokens": self.max_tokens,
-                **kwargs,
+                "messages": messages
             }
-            response = requests.post(headers=headers, json=payload)
+
+            response = requests.post(self.openai_proxy, headers=headers, json=payload)
 
             # Get the response as a JSON object
             response_json = response.json()
+
 
             # Return the JSON object if return_json is True
             if return_json is True:
@@ -198,7 +246,7 @@ class GPT4VisionAPI(BaseMultiModalModel):
         """
         PROMPT = f"""
         These are frames from a video that I want to upload. Generate a compelling description that I can upload along with the video:
-        
+
         {frames}
         """
         return PROMPT
