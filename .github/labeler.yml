@@ -27,13 +27,13 @@ ghactions:
 Scripts:
 - changed-files:
   - any-glob-to-any-file: scripts/*
-  
+
 ## Equivalent of the above mentioned configuration using another syntax
-Documentation:
+DocsAndGuides:
 - changed-files:
   - any-glob-to-any-file: ['docs/*', 'guides/*']
 
-# Add 'Documentation' label to any change to .md files within the entire repository 
+# Add 'Documentation' label to any change to .md files within the entire repository
 Documentation:
 - changed-files:
   - any-glob-to-any-file: '**/*.md'
