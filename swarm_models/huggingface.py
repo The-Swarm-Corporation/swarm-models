@@ -227,7 +227,7 @@ class HuggingfaceLLM(BaseLLM):
         - Generated text (str).
         """
         try:
-            inputs = self.tokenizer.encode(task, return_tensors="pt")
+            inputs = self.tokenizer.encode(task, return_tensors="pt").to(self.model.device)
 
             if self.decoding:
                 with torch.no_grad():
