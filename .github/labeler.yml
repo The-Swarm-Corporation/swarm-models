@@ -33,8 +33,8 @@ DocsAndGuides:
 - changed-files:
   - any-glob-to-any-file: ['docs/*', 'guides/*']
 
-# Add 'Documentation' label to any change to .md files within the entire repository
-Documentation:
+# Add 'DocsMarkdown' label to any change to .md files within the entire repository
+DocsMarkdown:
 - changed-files:
   - any-glob-to-any-file: '**/*.md'
 
