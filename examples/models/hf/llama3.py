@@ -1,5 +1,5 @@
 from swarm_models import Agent
-from swarm_models.prompts.finance_agent_sys_prompt import (
+from swarms.prompts.finance_agent_sys_prompt import (
     FINANCIAL_AGENT_SYS_PROMPT,
 )
 import torch
