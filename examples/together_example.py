@@ -1,5 +1,5 @@
 import os
-from swarm_models import TogetherLLM
+from swarm_models.together_llm import TogetherLLM
 
 
 # Example usage
@@ -16,9 +16,6 @@ if __name__ == "__main__":
         "Can you recommend a mutual fund for a beginner investor?",
         "How do I diversify my portfolio with mutual funds?",
     ]
-    # response_contents = model_runner.run_concurrently(tasks)
-    # for response_content in response_contents:
-    #     print(response_content)
     print(
         model_runner.run(
             "How do we allocate capital efficiently in your opion Larry?"
