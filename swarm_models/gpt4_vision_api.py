@@ -83,7 +83,6 @@ class GPT4VisionAPI(BaseMultiModalModel):
         self.meta_prompt = meta_prompt
         self.system_prompt = system_prompt
 
-
         if self.logging_enabled:
             logging.basicConfig(level=logging.DEBUG)
         else:
@@ -93,7 +92,6 @@ class GPT4VisionAPI(BaseMultiModalModel):
 
         if self.meta_prompt:
             self.system_prompt = self.meta_prompt_init()
-
 
     def encode_image(self, img: str):
         """Encode image to base64."""
@@ -113,7 +111,13 @@ class GPT4VisionAPI(BaseMultiModalModel):
         response = requests.get(img)
         return base64.b64encode(response.content).decode("utf-8")
 
-    def compose_messages(self, task: str, img: str, img_list: list = None, context: list = None):
+    def compose_messages(
+        self,
+        task: str,
+        img: str,
+        img_list: list = None,
+        context: list = None,
+    ):
         """Compose the payload for the GPT-4 Vision API, if illegal image paths are provided
             , None is returned, means the payload is not valid
 
@@ -135,11 +139,12 @@ class GPT4VisionAPI(BaseMultiModalModel):
             if None is returned, then the payload is not valid
         """
 
-
         # Compose the messages
         messages = []
         # Add the system prompt to the messages
-        messages.append({"role": "system", "content": self.system_prompt})
+        messages.append(
+            {"role": "system", "content": self.system_prompt}
+        )
         # Add the context to the messages
         messages = messages + context if context else messages
 
@@ -155,17 +160,30 @@ class GPT4VisionAPI(BaseMultiModalModel):
                 if image:
                     if os.path.exists(image):
                         encoded_img = self.encode_image(image)
-                        content.append({"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{encoded_img}"}})
+                        content.append(
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": f"data:image/jpeg;base64,{encoded_img}"
+                                },
+                            }
+                        )
                     elif image.startswith("http"):
-                        content.append({"type": "image_url", "image_url": {"url": f"{image}"}})
+                        content.append(
+                            {
+                                "type": "image_url",
+                                "image_url": {"url": f"{image}"},
+                            }
+                        )
                     else:
-                        logger.error(f"Image file not found: {image} or not a valid URL")
-                        print(f"Image file not found: {image} or not a valid URL")
+                        logger.error(
+                            f"Image file not found: {image} or not a valid URL"
+                        )
+                        print(
+                            f"Image file not found: {image} or not a valid URL"
+                        )
                         return None
-            content = {
-                "role": "user",
-                "content": content
-            }
+            content = {"role": "user", "content": content}
             messages.append(content)
             return messages
         return None
@@ -188,21 +206,23 @@ class GPT4VisionAPI(BaseMultiModalModel):
                 "Authorization": f"Bearer {self.openai_api_key}",
             }
             if messages is None:
-                messages = self.compose_messages(task, img, multi_imgs, messages)
+                messages = self.compose_messages(
+                    task, img, multi_imgs, messages
+                )
 
             if messages is None:
-                raise ValueError("Image path is invalid, please check the image path")
+                raise ValueError(
+                    "Image path is invalid, please check the image path"
+                )
 
-            payload = {
-                "model": self.model_name,
-                "messages": messages
-            }
+            payload = {"model": self.model_name, "messages": messages}
 
-            response = requests.post(self.openai_proxy, headers=headers, json=payload)
+            response = requests.post(
+                self.openai_proxy, headers=headers, json=payload
+            )
 
             # Get the response as a JSON object
             response_json = response.json()
-
 
             # Return the JSON object if return_json is True
             if return_json is True:
